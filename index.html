@@ -106,9 +106,7 @@
     }
 
     /* ── SECTIONS ── */
-    section {
-      margin-top: 60px;
-    }
+    section { margin-top: 60px; }
     .section-label {
       display: inline-flex;
       align-items: center;
@@ -152,10 +150,7 @@
       padding: 24px 28px;
       margin-bottom: 16px;
     }
-    .card p {
-      color: #ccc;
-      font-size: 15px;
-    }
+    .card p { color: #ccc; font-size: 15px; }
 
     /* ── MISSION BOX ── */
     .mission-box {
@@ -166,13 +161,8 @@
       padding: 24px 28px;
       margin-bottom: 16px;
     }
-    .mission-box p {
-      color: #bbb;
-      font-size: 15px;
-    }
-    .mission-box b {
-      color: var(--text);
-    }
+    .mission-box p { color: #bbb; font-size: 15px; }
+    .mission-box b { color: var(--text); }
 
     /* ── PULL QUOTE ── */
     .pull-quote {
@@ -218,11 +208,7 @@
       display: block;
       margin-bottom: 6px;
     }
-    .stat-growth {
-      font-size: 12px;
-      font-weight: 800;
-      color: var(--green);
-    }
+    .stat-growth { font-size: 12px; font-weight: 800; color: var(--green); }
 
     /* ── TABLES ── */
     .data-table {
@@ -250,21 +236,42 @@
       color: #ccc;
       vertical-align: top;
     }
-    .data-table tr:last-child td {
-      border-bottom: none;
-    }
-    .data-table .row-highlight {
-      background: rgba(255,102,0,0.07);
-    }
-    .data-table .row-highlight td {
-      color: var(--text);
-      font-weight: 700;
-    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .row-highlight { background: rgba(255,102,0,0.07); }
+    .data-table .row-highlight td { color: var(--text); font-weight: 700; }
     .data-table .row-highlight td:first-child::after {
       content: ' ★';
       color: var(--orange);
       font-size: 12px;
     }
+
+    /* ── KEY ARGUMENTS ── */
+    .arg-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .arg-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 20px 22px;
+    }
+    .arg-card h4 {
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--orange);
+      margin-bottom: 8px;
+    }
+    .arg-card p {
+      font-size: 13.5px;
+      color: #bbb;
+      line-height: 1.6;
+    }
+    .arg-card p b { color: var(--text); }
 
     /* ── TIER CARDS ── */
     .tier-card {
@@ -304,10 +311,7 @@
       color: var(--orange);
       white-space: nowrap;
     }
-    .tier-body {
-      background: var(--panel);
-      padding: 22px 24px;
-    }
+    .tier-body { background: var(--panel); padding: 22px 24px; }
     .tier-body ul {
       list-style: none;
       display: flex;
@@ -330,9 +334,7 @@
       line-height: 1.2;
       flex-shrink: 0;
     }
-    .tier-body li b {
-      color: var(--text);
-    }
+    .tier-body li b { color: var(--text); }
 
     /* ── FOOTER CTA ── */
     .footer-cta {
@@ -354,18 +356,13 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 80px;
-      height: 80px;
+      width: 80px; height: 80px;
       background: var(--orange);
       border-radius: 14px;
-      font-size: 28px;
-      font-weight: 900;
-      color: #000;
+      font-size: 28px; font-weight: 900; color: #000;
       margin-bottom: 24px;
     }
-    .footer-cta h2 {
-      margin-bottom: 8px;
-    }
+    .footer-cta h2 { margin-bottom: 8px; }
     .footer-cta .footer-email {
       font-size: clamp(18px, 4vw, 26px);
       font-weight: 900;
@@ -376,16 +373,8 @@
       transition: opacity 0.15s;
     }
     .footer-cta .footer-email:hover { opacity: 0.8; }
-    .footer-cta .footer-meta {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-    .footer-cta .footer-site {
-      font-size: 13px;
-      color: #555;
-      text-decoration: none;
-    }
+    .footer-cta .footer-meta { font-size: 14px; color: var(--muted); margin-bottom: 4px; }
+    .footer-cta .footer-site { font-size: 13px; color: #555; text-decoration: none; }
     .footer-cta .footer-site:hover { color: var(--orange); }
     .footer-tagline {
       margin-top: 28px;
@@ -398,17 +387,13 @@
     }
 
     /* ── UTIL ── */
-    .separator {
-      height: 1px;
-      background: var(--line);
-      margin: 48px 0;
-    }
+    .separator { height: 1px; background: var(--line); margin: 48px 0; }
     b { color: var(--text); }
     strong { color: var(--text); }
 
     @media (max-width: 540px) {
       .hero { padding: 40px 16px 36px; }
-      .card, .mission-box, .tier-body { padding: 18px 16px; }
+      .card, .mission-box, .tier-body, .arg-card { padding: 18px 16px; }
       .tier-head { padding: 14px 16px; }
       .footer-cta { padding: 36px 18px; }
       .data-table { font-size: 12px; }
@@ -542,43 +527,87 @@
   <!-- ══════════ BUSINESS CASE ══════════ -->
   <section>
     <div class="section-label">The Business Case</div>
-    <h2>AADS vs. The Market</h2>
-    <p style="color:#aaa; font-size:15px; margin-bottom:4px;">Local marketing companies charge high fees for static, forgettable ads. AADS offers immersive, permanent branding.</p>
+    <h2>AADS vs. Digital &amp; Outdoor Media</h2>
+    <p style="color:#aaa; font-size:15px; margin-bottom:4px;">2025 benchmark data. Local and digital marketing companies charge high fees for static, forgettable impressions. AADS offers immersive, permanent branding at a fraction of the cost.</p>
 
     <div style="overflow-x:auto;">
       <table class="data-table">
         <thead>
           <tr>
             <th>Marketing Format</th>
-            <th>Avg. CPM</th>
-            <th>Lifespan</th>
-            <th>Impact</th>
+            <th>Avg. CPM (2025)</th>
+            <th>Est. Lifespan</th>
+            <th>Engagement Style</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Local Radio / TV</td>
-            <td>$15 – $25</td>
-            <td>30 Seconds (Then Gone)</td>
-            <td>Background Noise</td>
-          </tr>
-          <tr>
-            <td>Newspaper / Print</td>
-            <td>$20 – $35</td>
-            <td>1 Day</td>
-            <td>Low Retention</td>
-          </tr>
           <tr class="row-highlight">
             <td>AADS Sponsorship</td>
             <td>~$1.60</td>
             <td>Permanent</td>
             <td>Active Focus</td>
           </tr>
+          <tr>
+            <td>LinkedIn (B2B)</td>
+            <td>$10.75 – $33.80</td>
+            <td>Seconds (Scroll)</td>
+            <td>Passive / Intent-based</td>
+          </tr>
+          <tr>
+            <td>Instagram Feed</td>
+            <td>$8.96 – $12.11</td>
+            <td>Seconds (Scroll)</td>
+            <td>Passive / Visual</td>
+          </tr>
+          <tr>
+            <td>YouTube (Non-Skippable)</td>
+            <td>$15.00 – $30.00</td>
+            <td>15–30 Seconds</td>
+            <td>Forced / Interrupted</td>
+          </tr>
+          <tr>
+            <td>Digital Billboards (DOOH)</td>
+            <td>$4.50 – $32.00</td>
+            <td>8–10 Seconds</td>
+            <td>Fleeting / Exterior</td>
+          </tr>
+          <tr>
+            <td>Facebook Feed</td>
+            <td>$11.54 – $14.40</td>
+            <td>Seconds (Scroll)</td>
+            <td>Passive / Social</td>
+          </tr>
+          <tr>
+            <td>Google Display (GDN)</td>
+            <td>$2.80 – $14.07</td>
+            <td>Static / Session</td>
+            <td>Background / Peripheral</td>
+          </tr>
         </tbody>
       </table>
     </div>
 
-    <div class="card">
+    <h3 style="margin-top:32px; margin-bottom:16px;">Key Competitive Arguments</h3>
+    <div class="arg-grid">
+      <div class="arg-card">
+        <h4>Immunity to Ad Inflation</h4>
+        <p>Digital platforms like Meta and Google see yearly CPM increases of <b>10–12%</b>. AADS offers a <b>fixed-value sponsorship</b> that doesn't fluctuate based on auction competition or seasonal spikes — Meta CPMs can exceed <b>$20 in December alone</b>.</p>
+      </div>
+      <div class="arg-card">
+        <h4>The "Permanent" Edge</h4>
+        <p>On LinkedIn or Instagram, a company pays for an impression that lasts only as long as a user is looking at their screen. Once the budget runs out, the ad disappears. <b>AADS sponsorship is permanent</b> — the initial investment continues to yield impressions indefinitely, with no recurring fees.</p>
+      </div>
+      <div class="arg-card">
+        <h4>Avoiding Ad Fatigue</h4>
+        <p>Digital users develop "banner blindness" — standard display ads average a <b>0.46% CTR</b>. AADS's immersive format places your brand in an environment of <b>Active Focus</b>, making it far harder to ignore than a sidebar banner or skippable video.</p>
+      </div>
+      <div class="arg-card">
+        <h4>Better Reach for B2B</h4>
+        <p>For companies targeting professionals, LinkedIn's CPM can exceed <b>$30</b>. AADS provides a professional, high-impact presence for a fraction of that cost — delivering a much larger <b>Share of Voice</b> within your target market.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
       <h3>The YouTube Legacy — The Infinite Ad</h3>
       <p>
         We switched from Facebook Live to <b>YouTube Live</b> because Facebook deletes streams after 30 days. On YouTube, your sponsorship lives <b>forever</b>. Fans re-watch matches from 2026 in 2028. Your investment continues to market for you long after the tournament ends.
