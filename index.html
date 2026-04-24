@@ -11,21 +11,23 @@
     :root {
       --bg: #050505;
       --panel: #111111;
-      --panel-2: #161616;
       --line: #2a2a2a;
       --text: #f0f0f0;
-      --muted: #999;
+      --muted: #888;
       --orange: #ff6600;
       --orange-soft: #ff7a00;
-      --orange-dim: rgba(255, 102, 0, 0.15);
+      --orange-dim: rgba(255,102,0,0.13);
       --green: #27ae60;
+      --gold: #f5c518;
+      --silver: #b0b8c1;
+      --bronze: #cd7f32;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       background:
-        radial-gradient(circle at top, rgba(255,102,0,0.14), transparent 38%),
+        radial-gradient(circle at top, rgba(255,102,0,0.13), transparent 38%),
         linear-gradient(180deg, #080808 0%, var(--bg) 100%);
       color: var(--text);
       font-family: 'Segoe UI', system-ui, sans-serif;
@@ -34,223 +36,286 @@
       min-height: 100vh;
     }
 
+    /* ── NAV BAR ── */
+    .topnav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(5,5,5,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      height: 52px;
+      overflow-x: auto;
+    }
+    .topnav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0 16px;
+      height: 52px;
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .topnav a:hover { color: var(--orange); border-bottom-color: var(--orange); }
+
     .shell {
-      width: min(900px, calc(100% - 32px));
+      width: min(920px, calc(100% - 32px));
       margin: 0 auto;
       padding-bottom: 80px;
     }
 
-    /* ── HERO ── */
-    .hero {
-      text-align: center;
-      padding: 60px 24px 50px;
-      border-bottom: 1px solid var(--line);
+    /* ── SECTION WRAPPER ── */
+    .section-block {
+      padding: 72px 0 0;
     }
-    .hero-logo {
-      width: min(280px, 72%);
-      height: auto;
-      margin-bottom: 28px;
-      filter: drop-shadow(0 0 32px rgba(255,102,0,0.35));
-    }
-    .hero-logo-fallback {
+    .section-eyebrow {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      width: 120px;
-      height: 120px;
-      background: var(--orange);
-      border-radius: 20px;
-      font-size: 40px;
+      gap: 10px;
+      font-size: 10px;
       font-weight: 900;
-      color: #000;
-      margin-bottom: 28px;
-      box-shadow: 0 0 60px rgba(255,102,0,0.4);
-    }
-    .hero-eyebrow {
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: 0.42em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 16px;
-    }
-    .hero h1 {
-      font-size: clamp(28px, 6vw, 52px);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      line-height: 1.1;
-      margin-bottom: 14px;
-    }
-    .hero-sub {
-      font-size: clamp(13px, 2vw, 17px);
-      color: var(--orange-soft);
-      font-weight: 700;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      margin-bottom: 22px;
-    }
-    .hero-divider {
-      width: 80px;
-      height: 4px;
-      background: var(--orange);
-      margin: 0 auto 22px;
-      border-radius: 2px;
-    }
-    .hero-tagline {
-      font-size: clamp(13px, 2.2vw, 17px);
-      color: var(--muted);
-      max-width: 600px;
-      margin: 0 auto;
-      font-style: italic;
-    }
-
-    /* ── SECTIONS ── */
-    section { margin-top: 60px; }
-    .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: 0.38em;
+      letter-spacing: 0.44em;
       text-transform: uppercase;
       color: var(--orange);
       margin-bottom: 10px;
     }
-    .section-label::before {
+    .section-eyebrow::before {
       content: '';
       display: block;
-      width: 28px;
-      height: 3px;
+      width: 24px; height: 2px;
       background: var(--orange);
       border-radius: 2px;
-      flex-shrink: 0;
     }
     h2 {
-      font-size: clamp(20px, 4vw, 30px);
+      font-size: clamp(22px, 4.5vw, 36px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+    .section-sub {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 680px;
+      margin-bottom: 32px;
+    }
+    h3 {
+      font-size: clamp(14px, 2.4vw, 17px);
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    /* ── HERO / HOOK ── */
+    .hero {
+      padding: 64px 0 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-left {}
+    .hero-logo {
+      width: min(240px, 85%);
+      height: auto;
+      display: block;
+      margin-bottom: 28px;
+      filter: drop-shadow(0 0 28px rgba(255,102,0,0.4));
+    }
+    .hero-logo-fallback {
+      width: 90px; height: 90px;
+      background: var(--orange);
+      border-radius: 16px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px; font-weight: 900; color: #000;
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.44em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-size: clamp(30px, 5.5vw, 54px);
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      margin-bottom: 20px;
-      line-height: 1.2;
+      line-height: 1.05;
+      margin-bottom: 18px;
     }
-    h3 {
-      font-size: clamp(15px, 2.5vw, 18px);
+    .hero-tagline {
+      font-size: clamp(14px, 2vw, 17px);
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+    .hero-cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--orange);
+      color: #000;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-ghost {
+      display: inline-block;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
       font-weight: 800;
-      color: var(--text);
-      margin-bottom: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: border-color 0.15s, color 0.15s;
     }
+    .btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
 
-    /* ── CARDS ── */
-    .card {
-      background: var(--panel);
+    /* right side problem/solution cards */
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .problem-card {
+      background: #0a0a0a;
       border: 1px solid var(--line);
       border-radius: 12px;
-      padding: 24px 28px;
-      margin-bottom: 16px;
+      padding: 20px 22px;
     }
-    .card p { color: #ccc; font-size: 15px; }
-
-    /* ── MISSION BOX ── */
-    .mission-box {
-      background: #0d0d0d;
-      border: 1px solid var(--line);
-      border-left: 6px solid var(--orange);
-      border-radius: 0 12px 12px 0;
-      padding: 24px 28px;
-      margin-bottom: 16px;
+    .problem-card .pc-label {
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
     }
-    .mission-box p { color: #bbb; font-size: 15px; }
-    .mission-box b { color: var(--text); }
+    .problem-card.bad .pc-label  { color: #c0392b; }
+    .problem-card.good .pc-label { color: var(--green); }
+    .problem-card.good { border-color: rgba(39,174,96,0.3); background: rgba(39,174,96,0.04); }
+    .problem-card p { font-size: 13.5px; color: #bbb; line-height: 1.55; }
+    .problem-card p b { color: var(--text); }
 
-    /* ── PULL QUOTE ── */
-    .pull-quote {
-      border-left: 6px solid var(--orange);
-      background: var(--orange-dim);
-      border-radius: 0 12px 12px 0;
-      padding: 20px 24px;
-      margin: 24px 0;
-      font-style: italic;
-      font-size: 16px;
-      color: #e0e0e0;
-      line-height: 1.7;
-    }
+    /* ── DIVIDER ── */
+    .sep { height: 1px; background: var(--line); margin: 64px 0 0; }
 
-    /* ── STATS GRID ── */
+    /* ── PROOF: STATS ── */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: 12px;
-      margin: 24px 0;
+      margin-bottom: 24px;
     }
     .stat-card {
       background: var(--panel);
       border: 1px solid var(--line);
       border-radius: 10px;
-      padding: 18px 16px;
+      padding: 18px 14px;
       text-align: center;
     }
     .stat-val {
       display: block;
-      font-size: clamp(22px, 4vw, 30px);
+      font-size: clamp(24px, 4vw, 32px);
       font-weight: 900;
       color: var(--text);
-      line-height: 1.1;
+      line-height: 1;
       margin-bottom: 4px;
     }
     .stat-label {
-      font-size: 10px;
-      font-weight: 700;
+      display: block;
+      font-size: 9px;
+      font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.2em;
       color: var(--muted);
-      display: block;
       margin-bottom: 6px;
     }
     .stat-growth { font-size: 12px; font-weight: 800; color: var(--green); }
+
+    /* demo row */
+    .demo-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin: 20px 0 32px;
+    }
+    .demo-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+    .demo-card .demo-icon { font-size: 22px; margin-bottom: 8px; }
+    .demo-card h4 { font-size: 12px; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 6px; }
+    .demo-card p { font-size: 13px; color: #bbb; line-height: 1.5; }
+    .demo-card p b { color: var(--text); }
 
     /* ── TABLES ── */
     .data-table {
       width: 100%;
       border-collapse: collapse;
       font-size: 14px;
-      margin: 20px 0;
+      margin: 8px 0 20px;
     }
     .data-table thead tr {
       background: #181818;
       border-bottom: 2px solid var(--orange);
     }
     .data-table th {
-      padding: 14px 16px;
+      padding: 13px 15px;
       text-align: left;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 900;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--orange);
     }
     .data-table td {
-      padding: 13px 16px;
+      padding: 12px 15px;
       border-bottom: 1px solid var(--line);
-      color: #ccc;
-      vertical-align: top;
+      color: #bbb;
+      vertical-align: middle;
     }
     .data-table tr:last-child td { border-bottom: none; }
-    .data-table .row-highlight { background: rgba(255,102,0,0.07); }
-    .data-table .row-highlight td { color: var(--text); font-weight: 700; }
-    .data-table .row-highlight td:first-child::after {
-      content: ' ★';
-      color: var(--orange);
-      font-size: 12px;
-    }
+    .data-table .row-aads { background: rgba(255,102,0,0.08); }
+    .data-table .row-aads td { color: var(--text); font-weight: 700; }
+    .data-table .row-aads td:first-child::after { content: ' ★'; color: var(--orange); font-size: 11px; }
 
-    /* ── KEY ARGUMENTS ── */
+    /* key arg cards */
     .arg-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 14px;
-      margin-top: 20px;
+      margin-top: 28px;
     }
     .arg-card {
       background: var(--panel);
@@ -259,232 +324,285 @@
       padding: 20px 22px;
     }
     .arg-card h4 {
-      font-size: 13px;
+      font-size: 11px;
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.16em;
       color: var(--orange);
       margin-bottom: 8px;
     }
-    .arg-card p {
-      font-size: 13.5px;
-      color: #bbb;
-      line-height: 1.6;
-    }
+    .arg-card p { font-size: 13.5px; color: #bbb; line-height: 1.6; }
     .arg-card p b { color: var(--text); }
 
-    /* ── TIER CARDS ── */
-    .tier-card {
+    /* ── CASE STUDIES ── */
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .case-card {
+      background: var(--panel);
       border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 24px 22px;
+    }
+    .case-card .case-amount {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .case-card .case-title {
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .case-card p { font-size: 13.5px; color: #bbb; line-height: 1.6; }
+    .case-card p b { color: var(--text); }
+
+    .mission-box {
+      background: #0d0d0d;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--orange);
+      border-radius: 0 12px 12px 0;
+      padding: 22px 26px;
+      margin-bottom: 14px;
+    }
+    .mission-box p { color: #bbb; font-size: 15px; }
+    .mission-box b { color: var(--text); }
+
+    .pull-quote {
+      border-left: 5px solid var(--orange);
+      background: var(--orange-dim);
+      border-radius: 0 12px 12px 0;
+      padding: 18px 22px;
+      margin: 24px 0;
+      font-style: italic;
+      font-size: 15.5px;
+      color: #ddd;
+      line-height: 1.7;
+    }
+
+    /* ── TIERS ── */
+    .tiers-intro {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .tier-card {
       border-radius: 14px;
       overflow: hidden;
-      margin-bottom: 20px;
+      border: 1px solid var(--line);
+      transition: transform 0.15s, box-shadow 0.15s;
     }
-    .tier-card.featured {
-      border-color: var(--orange);
-      box-shadow: 0 0 40px rgba(255,102,0,0.12);
-    }
+    .tier-card:hover { transform: translateY(-2px); }
+    .tier-card.gold  { border-color: var(--gold);   box-shadow: 0 0 36px rgba(245,197,24,0.1); }
+    .tier-card.silver{ border-color: var(--silver);  box-shadow: 0 0 36px rgba(176,184,193,0.08); }
+    .tier-card.bronze{ border-color: var(--bronze);  box-shadow: 0 0 36px rgba(205,127,50,0.08); }
+    .tier-card.menu  { border-color: var(--line); }
+
     .tier-head {
-      background: #161616;
-      padding: 18px 24px;
+      padding: 16px 22px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
       flex-wrap: wrap;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
-    .tier-card.featured .tier-head {
-      background: linear-gradient(90deg, #1a0c00, #161616);
-      border-bottom-color: rgba(255,102,0,0.3);
+    .tier-card.gold   .tier-head { background: linear-gradient(90deg, #1c1600, #161616); }
+    .tier-card.silver .tier-head { background: linear-gradient(90deg, #101214, #161616); }
+    .tier-card.bronze .tier-head { background: linear-gradient(90deg, #130d04, #161616); }
+    .tier-card.menu   .tier-head { background: #161616; }
+
+    .tier-badge {
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 4px;
     }
+    .tier-card.gold   .tier-badge { background: rgba(245,197,24,0.15); color: var(--gold); }
+    .tier-card.silver .tier-badge { background: rgba(176,184,193,0.12); color: var(--silver); }
+    .tier-card.bronze .tier-badge { background: rgba(205,127,50,0.15); color: var(--bronze); }
+    .tier-card.menu   .tier-badge { background: rgba(255,102,0,0.12); color: var(--orange); }
+
     .tier-name {
       font-size: 13px;
       font-weight: 900;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--text);
     }
     .tier-price {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 900;
-      color: var(--orange);
       white-space: nowrap;
     }
-    .tier-body { background: var(--panel); padding: 22px 24px; }
-    .tier-body ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+    .tier-card.gold   .tier-price { color: var(--gold); }
+    .tier-card.silver .tier-price { color: var(--silver); }
+    .tier-card.bronze .tier-price { color: var(--bronze); }
+    .tier-card.menu   .tier-price { color: var(--orange); }
+
+    .tier-body { background: var(--panel); padding: 20px 22px; }
+    .tier-body ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
     .tier-body li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 14px;
-      color: #ccc;
-      line-height: 1.5;
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 13.5px; color: #bbb; line-height: 1.5;
     }
     .tier-body li::before {
-      content: '›';
-      color: var(--orange);
-      font-size: 18px;
-      font-weight: 900;
-      line-height: 1.2;
-      flex-shrink: 0;
+      content: '›'; font-size: 17px; font-weight: 900;
+      line-height: 1.2; flex-shrink: 0;
     }
+    .tier-card.gold   .tier-body li::before { color: var(--gold); }
+    .tier-card.silver .tier-body li::before { color: var(--silver); }
+    .tier-card.bronze .tier-body li::before { color: var(--bronze); }
+    .tier-card.menu   .tier-body li::before { color: var(--orange); }
     .tier-body li b { color: var(--text); }
 
-    /* ── FOOTER CTA ── */
-    .footer-cta {
+    /* ── CTA SECTION ── */
+    .cta-block {
       margin-top: 72px;
       background: var(--panel);
       border: 1px solid var(--line);
-      border-top: 6px solid var(--orange);
+      border-top: 5px solid var(--orange);
       border-radius: 16px;
-      padding: 52px 32px;
+      padding: 60px 40px;
       text-align: center;
     }
-    .footer-cta .footer-logo {
-      width: min(200px, 55%);
+    .cta-block .cta-logo {
+      width: min(180px, 50%);
       height: auto;
       margin-bottom: 24px;
-      filter: drop-shadow(0 0 20px rgba(255,102,0,0.3));
+      filter: drop-shadow(0 0 18px rgba(255,102,0,0.3));
     }
-    .footer-cta .footer-logo-fallback {
+    .cta-block .cta-logo-fallback {
+      width: 72px; height: 72px;
+      background: var(--orange); border-radius: 14px;
+      display: none; align-items: center; justify-content: center;
+      font-size: 26px; font-weight: 900; color: #000;
+      margin: 0 auto 24px;
+    }
+    .cta-block h2 { margin-bottom: 10px; }
+    .cta-block .cta-sub {
+      font-size: 15px; color: var(--muted);
+      max-width: 540px; margin: 0 auto 36px;
+    }
+    .cta-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .btn-email {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      width: 80px; height: 80px;
+      gap: 10px;
       background: var(--orange);
-      border-radius: 14px;
-      font-size: 28px; font-weight: 900; color: #000;
-      margin-bottom: 24px;
-    }
-    .footer-cta h2 { margin-bottom: 8px; }
-    .footer-cta .footer-email {
-      font-size: clamp(18px, 4vw, 26px);
+      color: #000;
+      font-size: 14px;
       font-weight: 900;
-      color: var(--orange);
+      padding: 16px 32px;
+      border-radius: 10px;
       text-decoration: none;
-      display: block;
-      margin: 20px 0 6px;
-      transition: opacity 0.15s;
+      transition: opacity 0.15s, transform 0.1s;
     }
-    .footer-cta .footer-email:hover { opacity: 0.8; }
-    .footer-cta .footer-meta { font-size: 14px; color: var(--muted); margin-bottom: 4px; }
-    .footer-cta .footer-site { font-size: 13px; color: #555; text-decoration: none; }
-    .footer-cta .footer-site:hover { color: var(--orange); }
-    .footer-tagline {
-      margin-top: 28px;
-      font-size: 13px;
-      font-style: italic;
-      color: #555;
-      max-width: 520px;
-      margin-left: auto;
-      margin-right: auto;
+    .btn-email:hover { opacity: 0.88; transform: translateY(-1px); }
+    .cta-contact {
+      border-top: 1px solid var(--line);
+      padding-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
+    .cta-contact .contact-name { font-size: 15px; font-weight: 700; color: var(--text); }
+    .cta-contact .contact-role { font-size: 13px; color: var(--muted); }
+    .cta-contact .contact-site { font-size: 13px; color: #444; text-decoration: none; margin-top: 6px; }
+    .cta-contact .contact-site:hover { color: var(--orange); }
 
-    /* ── UTIL ── */
-    .separator { height: 1px; background: var(--line); margin: 48px 0; }
-    b { color: var(--text); }
-    strong { color: var(--text); }
-
-    @media (max-width: 540px) {
-      .hero { padding: 40px 16px 36px; }
-      .card, .mission-box, .tier-body, .arg-card { padding: 18px 16px; }
-      .tier-head { padding: 14px 16px; }
-      .footer-cta { padding: 36px 18px; }
+    @media (max-width: 700px) {
+      .hero { grid-template-columns: 1fr; gap: 32px; }
+      .hero-right { order: -1; }
+      .cta-block { padding: 36px 18px; }
       .data-table { font-size: 12px; }
       .data-table th, .data-table td { padding: 10px 10px; }
+    }
+    @media (max-width: 480px) {
+      .topnav a { padding: 0 10px; font-size: 9.5px; }
     }
   </style>
 </head>
 <body>
+
+<!-- STICKY NAV -->
+<nav class="topnav">
+  <a href="#hook">About Us</a>
+  <a href="#proof">Our Numbers</a>
+  <a href="#casestudies">Our Work</a>
+  <a href="#tiers">Sponsorship</a>
+  <a href="#cta">Contact</a>
+</nav>
+
 <div class="shell">
 
-  <!-- ══════════ HERO ══════════ -->
-  <div class="hero">
-    <img
-      src="images/AADS-Logo-png.png"
-      alt="AADS — Atlantic Amateur Darts Series"
-      class="hero-logo"
-      onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex';"
-    />
-    <div class="hero-logo-fallback" style="display:none;">🎯</div>
-    <div class="hero-eyebrow">Atlantic Amateur Darts Series</div>
-    <h1>Sponsorship Program</h1>
-    <div class="hero-sub">The Ultimate Partnership Manifesto — 2026</div>
-    <div class="hero-divider"></div>
-    <p class="hero-tagline">"More than a broadcast. A community legacy."</p>
+  <!-- ══════════════════════════════════════
+       SECTION 1 — ABOUT US (THE HOOK)
+  ══════════════════════════════════════ -->
+  <div id="hook" class="hero">
+    <div class="hero-left">
+      <img
+        src="images/AADS-Logo-png.png"
+        alt="AADS — Atlantic Amateur Darts Series"
+        class="hero-logo"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex';"
+      />
+      <div class="hero-logo-fallback">🎯</div>
+      <div class="hero-eyebrow">Atlantic Amateur Darts Series</div>
+      <h1>The Stage Your Brand Deserves</h1>
+      <p class="hero-tagline">
+        "Traditional ads disappear the moment you stop paying. AADS sponsorship is permanent — your brand lives in every replay, forever."
+      </p>
+      <div class="hero-cta-row">
+        <a href="#cta" class="btn-primary">Become a Partner</a>
+        <a href="#tiers" class="btn-ghost">View Packages</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="problem-card bad">
+        <div class="pc-label">The Problem with Traditional Ads</div>
+        <p>A 30-second radio spot averages <b>$15–$25 CPM</b> — and disappears the moment it airs. Digital platforms delete or bury your ad the second your budget runs out. You pay again and again for the same eyeballs, with <b>no lasting value</b>.</p>
+      </div>
+      <div class="problem-card good">
+        <div class="pc-label">The AADS Solution</div>
+        <p>We stream on <b>YouTube permanently</b>. Your logo, your commercial, your branding — visible in every live match and in every replay watched in 2027, 2028, and beyond. <b>One investment. Infinite impressions.</b></p>
+      </div>
+      <div class="problem-card bad" style="border-color:rgba(255,102,0,0.2);">
+        <div class="pc-label" style="color:var(--muted);">Who We Are</div>
+        <p>Born in <b>Cecil's Garage in Moncton</b>, AADS grew from a Friday-night local league into a professional broadcast platform for Atlantic Canadian Darts — funded entirely out of pocket because we believe the players deserve a stage.</p>
+      </div>
+    </div>
   </div>
 
-  <div style="text-align:center; padding: 28px 0 0;">
-    <p style="font-size:clamp(14px,2.2vw,17px); color:#888; max-width:620px; margin:0 auto;">
-      This is not a corporate pitch. This is an invitation to join a mission built on integrity, family, and the future of Atlantic Canadian Darts.
-    </p>
-  </div>
+  <div class="sep"></div>
 
-  <!-- ══════════ OUR STORY ══════════ -->
-  <section>
-    <div class="section-label">Our Story</div>
-    <h2>The Heart of the CGC</h2>
-
-    <div class="card">
-      <h3>From a Garage to a Network</h3>
-      <p>
-        AADS was born in <b>Cecil's Garage</b> in Moncton. Known as the Cecil's Garage Championship (CGC), it began with a small group of players meeting Friday nights for the love of the sport. We didn't have sponsors or grants. We used <b>square boards</b> and tiny 50/50 draws to buy boards and trophies. Matthew Dow took that local spark and used his skills in graphic design and promotion to build a professional platform for the players.
-      </p>
-    </div>
-
-    <div class="mission-box">
-      <h3>The Truth About Our Funding</h3>
-      <p>
-        This program is a labor of love. Matthew Dow and Cecil Dow do not take a profit. In fact, <b>we currently fund the heating costs of winter events, the DartConnect fees, the cameras, and the entire live stream setup from our own personal pockets.</b> We do this because we believe the players deserve a stage and the community needs a home. We offer exposure to our partners not to get rich, but to keep the series running and keep the sport alive.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Building Stage Presence</h3>
-      <p>
-        Matthew designed AADS after traveling to the Canadian Open and seeing talented regional players underperform because they were "stage struck." We provide the lights, the cameras, and the atmosphere so that when our players reach the National stage, they've already played like pros.
-      </p>
-    </div>
-  </section>
-
-  <!-- ══════════ COMMUNITY IMPACT ══════════ -->
-  <section>
-    <div class="section-label">Community Impact</div>
-    <h2>We Take Care of Our Own</h2>
-    <p style="color:#aaa; font-size:15px; margin-bottom:20px;">AADS is a platform for the people. In our first year, we raised over <b>$10,000</b> for those in need.</p>
-
-    <div class="card">
-      <h3>The Carl Zugay Medical Fund</h3>
-      <p>
-        Carl is a 30-year veteran of the local leagues. When a medical condition left him struggling to walk, he mentioned a leg brace he couldn't afford. <b>Matthew along with the CGC family</b> rallied the community. In a single night, we raised <b>$1,000 in cash</b> to buy Carl his brace. No middleman, no fees — just a community supporting a legend.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>The Youth Nationals Mission</h3>
-      <p>
-        In <b>April 2026</b>, we hosted a high-impact fundraiser for youth stars <b>Rhyder and Emma</b>. Through live stream QR codes and donors who paid $100 to watch volunteers shave their heads, we raised <b>$850</b> for their travel to the May Nationals. We have also raised <b>$4,600</b> for a grieving mother and supported travel for players to the World Cup in <b>South Korea</b> and <b>Hungary</b>.
-      </p>
-    </div>
-
-    <div class="pull-quote">
-      "By helping us, you are fueling the future. Our goal is to encourage kids to join the sport, bring their friends, and grow the game until Atlantic Canada is the dominant force in World Darts."
-    </div>
-  </section>
-
-  <div class="separator"></div>
-
-  <!-- ══════════ AUDIENCE ANALYTICS ══════════ -->
-  <section>
-    <div class="section-label">Verified Analytics</div>
-    <h2>Audience Reach &amp; Growth</h2>
-    <p style="color:#aaa; font-size:15px; margin-bottom:20px;">These are <b>Facebook Foundation Stats</b> representing the massive reach we have already built.</p>
+  <!-- ══════════════════════════════════════
+       SECTION 2 — OUR NUMBERS (THE PROOF)
+  ══════════════════════════════════════ -->
+  <div id="proof" class="section-block">
+    <div class="section-eyebrow">The Proof</div>
+    <h2>Our Numbers &amp; Audience</h2>
+    <p class="section-sub">Verified Facebook Foundation Stats. The numbers speak for themselves — and they're still growing.</p>
 
     <div class="stats-grid">
       <div class="stat-card">
@@ -519,162 +637,196 @@
       </div>
     </div>
 
-    <div class="pull-quote">
-      77.1% of our viewers are <b>Non-Followers</b>. We are constantly breaking into new markets. Our reach now unites all four Atlantic Provinces and extends to viewers in the UK and Ireland.
+    <!-- DEMOGRAPHICS -->
+    <h3 style="margin-bottom:14px;">Who's Watching</h3>
+    <div class="demo-row">
+      <div class="demo-card">
+        <div class="demo-icon">🗺️</div>
+        <h4>Geography</h4>
+        <p>Viewers across <b>all four Atlantic Provinces</b>, with growing reach into the UK and Ireland — the global heartland of darts.</p>
+      </div>
+      <div class="demo-card">
+        <div class="demo-icon">🔓</div>
+        <h4>New Audiences</h4>
+        <p><b>77.1% of viewers are Non-Followers</b> — we are constantly breaking into new markets, not just recycling the same audience.</p>
+      </div>
+      <div class="demo-card">
+        <div class="demo-icon">📈</div>
+        <h4>Explosive Growth</h4>
+        <p>625% growth in 90 days. We are in an <b>accelerated expansion phase</b> — brands who join now get in at the lowest CPM we will ever offer.</p>
+      </div>
+      <div class="demo-card">
+        <div class="demo-icon">🎯</div>
+        <h4>Engaged Viewers</h4>
+        <p>Darts fans watch matches from <b>start to finish</b> — 6+ hours of Active Focus per event. Not a passive scroll. Not a 30-second skip.</p>
+      </div>
     </div>
-  </section>
 
-  <!-- ══════════ BUSINESS CASE ══════════ -->
-  <section>
-    <div class="section-label">The Business Case</div>
-    <h2>AADS vs. Digital &amp; Outdoor Media</h2>
-    <p style="color:#aaa; font-size:15px; margin-bottom:4px;">2025 benchmark data. Local and digital marketing companies charge high fees for static, forgettable impressions. AADS offers immersive, permanent branding at a fraction of the cost.</p>
-
+    <!-- CPM COMPARISON TABLE -->
+    <h3 style="margin-bottom:6px;">AADS vs. Digital &amp; Outdoor Media — 2025 Benchmarks</h3>
+    <p style="font-size:13px; color:var(--muted); margin-bottom:12px;">At ~$1.60 CPM with permanent reach, no other format comes close.</p>
     <div style="overflow-x:auto;">
       <table class="data-table">
         <thead>
           <tr>
             <th>Marketing Format</th>
             <th>Avg. CPM (2025)</th>
-            <th>Est. Lifespan</th>
+            <th>Lifespan</th>
             <th>Engagement Style</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="row-highlight">
+          <tr class="row-aads">
             <td>AADS Sponsorship</td>
             <td>~$1.60</td>
             <td>Permanent</td>
             <td>Active Focus</td>
           </tr>
-          <tr>
-            <td>LinkedIn (B2B)</td>
-            <td>$10.75 – $33.80</td>
-            <td>Seconds (Scroll)</td>
-            <td>Passive / Intent-based</td>
-          </tr>
-          <tr>
-            <td>Instagram Feed</td>
-            <td>$8.96 – $12.11</td>
-            <td>Seconds (Scroll)</td>
-            <td>Passive / Visual</td>
-          </tr>
-          <tr>
-            <td>YouTube (Non-Skippable)</td>
-            <td>$15.00 – $30.00</td>
-            <td>15–30 Seconds</td>
-            <td>Forced / Interrupted</td>
-          </tr>
-          <tr>
-            <td>Digital Billboards (DOOH)</td>
-            <td>$4.50 – $32.00</td>
-            <td>8–10 Seconds</td>
-            <td>Fleeting / Exterior</td>
-          </tr>
-          <tr>
-            <td>Facebook Feed</td>
-            <td>$11.54 – $14.40</td>
-            <td>Seconds (Scroll)</td>
-            <td>Passive / Social</td>
-          </tr>
-          <tr>
-            <td>Google Display (GDN)</td>
-            <td>$2.80 – $14.07</td>
-            <td>Static / Session</td>
-            <td>Background / Peripheral</td>
-          </tr>
+          <tr><td>LinkedIn (B2B)</td><td>$10.75 – $33.80</td><td>Seconds (Scroll)</td><td>Passive / Intent-based</td></tr>
+          <tr><td>Instagram Feed</td><td>$8.96 – $12.11</td><td>Seconds (Scroll)</td><td>Passive / Visual</td></tr>
+          <tr><td>YouTube (Non-Skippable)</td><td>$15.00 – $30.00</td><td>15–30 Seconds</td><td>Forced / Interrupted</td></tr>
+          <tr><td>Digital Billboards (DOOH)</td><td>$4.50 – $32.00</td><td>8–10 Seconds</td><td>Fleeting / Exterior</td></tr>
+          <tr><td>Facebook Feed</td><td>$11.54 – $14.40</td><td>Seconds (Scroll)</td><td>Passive / Social</td></tr>
+          <tr><td>Google Display (GDN)</td><td>$2.80 – $14.07</td><td>Static / Session</td><td>Background / Peripheral</td></tr>
+          <tr><td>Local Radio / TV</td><td>$15.00 – $25.00</td><td>30 Seconds (Then Gone)</td><td>Background Noise</td></tr>
         </tbody>
       </table>
     </div>
 
-    <h3 style="margin-top:32px; margin-bottom:16px;">Key Competitive Arguments</h3>
     <div class="arg-grid">
       <div class="arg-card">
         <h4>Immunity to Ad Inflation</h4>
-        <p>Digital platforms like Meta and Google see yearly CPM increases of <b>10–12%</b>. AADS offers a <b>fixed-value sponsorship</b> that doesn't fluctuate based on auction competition or seasonal spikes — Meta CPMs can exceed <b>$20 in December alone</b>.</p>
+        <p>Meta and Google CPMs rise <b>10–12% yearly</b>. AADS is a fixed-value sponsorship — no auction, no seasonal spikes, no December $20+ CPM surprises.</p>
       </div>
       <div class="arg-card">
-        <h4>The "Permanent" Edge</h4>
-        <p>On LinkedIn or Instagram, a company pays for an impression that lasts only as long as a user is looking at their screen. Once the budget runs out, the ad disappears. <b>AADS sponsorship is permanent</b> — the initial investment continues to yield impressions indefinitely, with no recurring fees.</p>
+        <h4>The Permanent Edge</h4>
+        <p>Every other platform's ad disappears when the budget runs out. <b>AADS YouTube streams live forever.</b> Your 2026 investment markets for you in 2028 and beyond.</p>
       </div>
       <div class="arg-card">
-        <h4>Avoiding Ad Fatigue</h4>
-        <p>Digital users develop "banner blindness" — standard display ads average a <b>0.46% CTR</b>. AADS's immersive format places your brand in an environment of <b>Active Focus</b>, making it far harder to ignore than a sidebar banner or skippable video.</p>
+        <h4>No Ad Fatigue</h4>
+        <p>Standard display ads average a <b>0.46% CTR</b> due to banner blindness. AADS puts your brand in an environment of Active Focus — impossible to ignore.</p>
       </div>
       <div class="arg-card">
-        <h4>Better Reach for B2B</h4>
-        <p>For companies targeting professionals, LinkedIn's CPM can exceed <b>$30</b>. AADS provides a professional, high-impact presence for a fraction of that cost — delivering a much larger <b>Share of Voice</b> within your target market.</p>
+        <h4>B2B Share of Voice</h4>
+        <p>LinkedIn CPM can exceed <b>$30 for professional audiences</b>. AADS delivers the same credibility and professional context for a fraction of that cost.</p>
       </div>
     </div>
+  </div>
 
-    <div class="card" style="margin-top:20px;">
-      <h3>The YouTube Legacy — The Infinite Ad</h3>
-      <p>
-        We switched from Facebook Live to <b>YouTube Live</b> because Facebook deletes streams after 30 days. On YouTube, your sponsorship lives <b>forever</b>. Fans re-watch matches from 2026 in 2028. Your investment continues to market for you long after the tournament ends.
-      </p>
+  <div class="sep"></div>
+
+  <!-- ══════════════════════════════════════
+       SECTION 3 — CASE STUDIES / ACCOMPLISHMENTS
+  ══════════════════════════════════════ -->
+  <div id="casestudies" class="section-block">
+    <div class="section-eyebrow">Accomplishments</div>
+    <h2>What We've Already Built</h2>
+    <p class="section-sub">Before you were a partner, we were already delivering results. Here's our track record.</p>
+
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="case-amount">$10,000+</div>
+        <div class="case-title">Community Raised — Year One</div>
+        <p>In our first year of operation, AADS fundraising efforts raised over <b>$10,000 for people in need</b> — directly through the platform, no middleman, no overhead.</p>
+      </div>
+      <div class="case-card">
+        <div class="case-amount">$1,000</div>
+        <div class="case-title">Carl Zugay Medical Fund</div>
+        <p>Carl is a <b>30-year veteran</b> of local darts. When he couldn't afford a medical leg brace, the AADS community rallied. We raised <b>$1,000 in a single night</b> — cash in hand, no fees.</p>
+      </div>
+      <div class="case-card">
+        <div class="case-amount">$850</div>
+        <div class="case-title">Youth Nationals — Rhyder &amp; Emma</div>
+        <p>April 2026: live stream QR codes + a head-shaving fundraiser raised <b>$850 for youth players</b> to attend the May Nationals. Community activation at its finest.</p>
+      </div>
+      <div class="case-card">
+        <div class="case-amount">$4,600</div>
+        <div class="case-title">Community Hardship Relief</div>
+        <p>We raised <b>$4,600 for a grieving mother</b> and funded travel for players to the World Cup in <b>South Korea</b> and <b>Hungary</b>.</p>
+      </div>
     </div>
-  </section>
-
-  <!-- ══════════ PODCAST ══════════ -->
-  <section>
-    <div class="section-label">New Media</div>
-    <h2>"Behind the Oche" Podcast</h2>
-    <p style="color:#aaa; font-size:15px; margin-bottom:16px;">We are expanding. Our new weekly podcast goes deep into player profiles, match analysis, and the AADS lifestyle.</p>
 
     <div class="mission-box">
-      <h3>The "Early Believer" Advantage</h3>
-      <p>
-        Any sponsor who jumps on board now, during our growth stages, will be <b>PRIORITIZED</b> for showcase spots on the podcast. We reward those who believe in the mission early by giving them the first right to be featured on our most intimate "Behind the Oche" segments.
-      </p>
-    </div>
-  </section>
-
-  <div class="separator"></div>
-
-  <!-- ══════════ TIER 1 ══════════ -->
-  <section>
-    <div class="section-label">Tier 1</div>
-    <h2>Series Anchor Partnerships</h2>
-
-    <div class="tier-card featured">
-      <div class="tier-head">
-        <span class="tier-name">Major Title Series Partner</span>
-        <span class="tier-price">$2,000 / Series</span>
-      </div>
-      <div class="tier-body">
-        <ul>
-          <li><b>Exclusivity:</b> The only Title Partner at the Tournament of Champions Finale.</li>
-          <li><b>Broadcast Power:</b> Your commercial is the FIRST ad played in every break (minimum 10 per event).</li>
-          <li><b>Podcast Priority:</b> First priority for interview and showcase spots on Behind the Oche.</li>
-          <li><b>Jersey Legacy:</b> Primary chest logo on all Champion and Fan Replica jerseys.</li>
-        </ul>
-      </div>
+      <h3>Why We Do This Without Profit</h3>
+      <p>Matthew Dow and Cecil Dow <b>fund this series out of their own pockets</b> — heating costs, DartConnect fees, cameras, and the entire live stream setup. We built this because the players deserve a stage and the community needs a home. We are not selling ads to get rich. We are keeping the sport alive.</p>
     </div>
 
-    <div class="tier-card">
-      <div class="tier-head">
-        <span class="tier-name">Official Board Sponsor</span>
-        <span class="tier-price">$1,000 / Series</span>
-      </div>
-      <div class="tier-body">
-        <ul>
-          <li><b>100% Screen Time:</b> Your logo stays on the Board A surround for every single match.</li>
-          <li><b>Immersive Branding:</b> Fans stare at your logo for 6+ hours as they watch every event.</li>
-        </ul>
-      </div>
+    <div class="mission-box">
+      <h3>Stage Presence — The AADS Difference</h3>
+      <p>Matthew designed AADS after watching talented Atlantic Canadian players underperform at the Canadian Open because they were <b>"stage struck."</b> We provide the lights, the cameras, and the atmosphere — so when our players reach the National or World stage, <b>they've already played like pros.</b></p>
     </div>
-  </section>
 
-  <!-- ══════════ TIER 2 ══════════ -->
-  <section>
-    <div class="section-label">Tier 2</div>
-    <h2>Qualifier Event Menu — Events 1–6</h2>
+    <div class="pull-quote">
+      "By helping us, you are fueling the future. Our goal is to encourage kids to join the sport, bring their friends, and grow the game until Atlantic Canada is the dominant force in World Darts."
+    </div>
 
+    <!-- PODCAST -->
+    <div class="arg-card" style="margin-top:16px;">
+      <h4>New: "Behind the Oche" Podcast</h4>
+      <p>We are expanding into weekly long-form content — player profiles, match analysis, and the AADS lifestyle. <b>Early sponsors get first priority for podcast interview and showcase spots.</b> Those who believe in the mission now will be rewarded with the most intimate brand placement we offer.</p>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- ══════════════════════════════════════
+       SECTION 4 — SPONSORSHIP TIERS (THE MENU)
+  ══════════════════════════════════════ -->
+  <div id="tiers" class="section-block">
+    <div class="section-eyebrow">Partner Packages</div>
+    <h2>Sponsorship Tiers</h2>
+    <p class="section-sub">Choose the level that fits your goals. All tiers include permanent YouTube archive visibility — your brand never expires.</p>
+
+    <div class="tiers-intro">
+
+      <!-- GOLD -->
+      <div class="tier-card gold">
+        <div class="tier-head">
+          <div>
+            <div class="tier-badge">Gold</div>
+            <div class="tier-name">Major Title Series Partner</div>
+          </div>
+          <div class="tier-price">$2,000</div>
+        </div>
+        <div class="tier-body">
+          <ul>
+            <li><b>Exclusivity:</b> The only Title Partner at the Tournament of Champions Finale.</li>
+            <li><b>Broadcast Power:</b> Your commercial plays FIRST in every ad break — minimum 10 per event.</li>
+            <li><b>Podcast Priority:</b> First pick for interview and showcase features on Behind the Oche.</li>
+            <li><b>Jersey Legacy:</b> Primary chest logo on all Champion and Fan Replica jerseys.</li>
+            <li><b>Full Series:</b> Branding across all qualifier events and the finale.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SILVER -->
+      <div class="tier-card silver">
+        <div class="tier-head">
+          <div>
+            <div class="tier-badge">Silver</div>
+            <div class="tier-name">Official Board Sponsor</div>
+          </div>
+          <div class="tier-price">$1,000</div>
+        </div>
+        <div class="tier-body">
+          <ul>
+            <li><b>100% Screen Time:</b> Your logo on the Board A surround for every single match — the most-viewed spot in the broadcast.</li>
+            <li><b>Immersive Branding:</b> Fans watch your logo for <b>6+ hours per event</b> — not 30 seconds.</li>
+            <li><b>Permanent Archive:</b> Every YouTube replay extends your impression count indefinitely.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BRONZE / EVENT MENU -->
+    <h3 style="margin-bottom:6px;">Bronze — Qualifier Event Menu</h3>
+    <p style="font-size:13px; color:var(--muted); margin-bottom:16px;">Mix and match per event, or bundle all 6 for maximum savings.</p>
     <div style="overflow-x:auto;">
       <table class="data-table">
         <thead>
           <tr>
-            <th>Category</th>
+            <th>Package</th>
             <th>Single Event</th>
             <th>6-Event Bundle</th>
           </tr>
@@ -683,50 +835,64 @@
           <tr>
             <td><b>Event Night Partner</b> — Scoreboard &amp; Graphics</td>
             <td>$350</td>
-            <td>$1,750 <span style="color:var(--green);font-size:12px;">(Save $350)</span></td>
+            <td>$1,750 <span style="color:var(--green);font-size:11px;">(Save $350)</span></td>
           </tr>
           <tr>
             <td><b>Commercial Spot</b> — 45-sec Rotation</td>
             <td>$250</td>
-            <td>$1,250 <span style="color:var(--green);font-size:12px;">(Save $250)</span></td>
+            <td>$1,250 <span style="color:var(--green);font-size:11px;">(Save $250)</span></td>
           </tr>
           <tr>
             <td><b>Interview Zone</b> — Naming Rights</td>
             <td>$200</td>
-            <td>$1,000 <span style="color:var(--green);font-size:12px;">(Save $200)</span></td>
+            <td>$1,000 <span style="color:var(--green);font-size:11px;">(Save $200)</span></td>
           </tr>
           <tr>
             <td><b>Apparel Partner</b> — Social Media Tagging</td>
             <td>$100</td>
-            <td>$500 <span style="color:var(--green);font-size:12px;">(Save $100)</span></td>
+            <td>$500 <span style="color:var(--green);font-size:11px;">(Save $100)</span></td>
           </tr>
           <tr>
             <td><b>Drink Table Partner</b> — Product Placement</td>
             <td>$100</td>
-            <td>$500 <span style="color:var(--green);font-size:12px;">(Save $100)</span></td>
+            <td>$500 <span style="color:var(--green);font-size:11px;">(Save $100)</span></td>
           </tr>
         </tbody>
       </table>
     </div>
-  </section>
+  </div>
 
-  <!-- ══════════ FOOTER CTA ══════════ -->
-  <div class="footer-cta">
+  <!-- ══════════════════════════════════════
+       SECTION 5 — CALL TO ACTION
+  ══════════════════════════════════════ -->
+  <div id="cta" class="cta-block">
     <img
       src="images/AADS-Logo-png.png"
       alt="AADS"
-      class="footer-logo"
+      class="cta-logo"
+      style="display:block; margin:0 auto 24px;"
       onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex';"
     />
-    <div class="footer-logo-fallback" style="display:none;">🎯</div>
-    <h2>Help Us Grow the Game</h2>
-    <p style="color:#888; font-size:15px; max-width:500px; margin:0 auto;">We provide the platform, you provide the fuel. Together, we show the world what Atlantic Canadian Darts is all about.</p>
-    <a class="footer-email" href="mailto:cgcdarts@gmail.com">cgcdarts@gmail.com</a>
-    <p class="footer-meta">Matthew Dow, Founder &mdash; Moncton, NB</p>
-    <a class="footer-site" href="https://www.aadsdarts.com" target="_blank" rel="noopener">www.aadsdarts.com</a>
-    <p class="footer-tagline">
-      "We provide the platform, you provide the fuel. Together, we show the world what Atlantic Canadian Darts is all about."
+    <div class="cta-logo-fallback">🎯</div>
+
+    <h2>Ready to Grow With Us?</h2>
+    <p class="cta-sub">
+      Schedule a discovery call or send us a message. We'll find the right package for your budget and goals — no pressure, no contracts, just results.
     </p>
+
+    <div class="cta-actions">
+      <a href="mailto:cgcdarts@gmail.com?subject=AADS Sponsorship Inquiry" class="btn-email">
+        📧 &nbsp;Schedule a Discovery Call
+      </a>
+      <a href="#tiers" class="btn-ghost" style="padding:16px 28px;">View Packages</a>
+    </div>
+
+    <div class="cta-contact">
+      <span class="contact-name">Matthew Dow</span>
+      <span class="contact-role">Founder &amp; Executive Director — Moncton, NB</span>
+      <span class="contact-role">cgcdarts@gmail.com</span>
+      <a class="contact-site" href="https://www.aadsdarts.com" target="_blank" rel="noopener">www.aadsdarts.com</a>
+    </div>
   </div>
 
 </div>
