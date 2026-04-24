@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AADS Sponsorship Program — Partner With Us</title>
+  <meta name="description" content="Partner with the Atlantic Area Darts Series. Over 1.2 million views and growing. Sponsorship tiers from $100 to $2,000." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #050505;
+      --panel: #111111;
+      --panel-2: #161616;
+      --line: #2a2a2a;
+      --text: #f0f0f0;
+      --muted: #999;
+      --orange: #ff6600;
+      --orange-soft: #ff7a00;
+      --orange-dim: rgba(255, 102, 0, 0.15);
+      --green: #27ae60;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background:
+        radial-gradient(circle at top, rgba(255,102,0,0.14), transparent 38%),
+        linear-gradient(180deg, #080808 0%, var(--bg) 100%);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+
+    .shell {
+      width: min(900px, calc(100% - 32px));
+      margin: 0 auto;
+      padding-bottom: 80px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 60px 24px 50px;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-logo {
+      width: min(280px, 72%);
+      height: auto;
+      margin-bottom: 28px;
+      filter: drop-shadow(0 0 32px rgba(255,102,0,0.35));
+    }
+    .hero-logo-fallback {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 120px;
+      height: 120px;
+      background: var(--orange);
+      border-radius: 20px;
+      font-size: 40px;
+      font-weight: 900;
+      color: #000;
+      margin-bottom: 28px;
+      box-shadow: 0 0 60px rgba(255,102,0,0.4);
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 6vw, 52px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .hero-sub {
+      font-size: clamp(13px, 2vw, 17px);
+      color: var(--orange-soft);
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    .hero-divider {
+      width: 80px;
+      height: 4px;
+      background: var(--orange);
+      margin: 0 auto 22px;
+      border-radius: 2px;
+    }
+    .hero-tagline {
+      font-size: clamp(13px, 2.2vw, 17px);
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+      font-style: italic;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      margin-top: 60px;
+    }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 10px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 3px;
+      background: var(--orange);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    h2 {
+      font-size: clamp(20px, 4vw, 30px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    h3 {
+      font-size: clamp(15px, 2.5vw, 18px);
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 16px;
+    }
+    .card p {
+      color: #ccc;
+      font-size: 15px;
+    }
+
+    /* ── MISSION BOX ── */
+    .mission-box {
+      background: #0d0d0d;
+      border: 1px solid var(--line);
+      border-left: 6px solid var(--orange);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin-bottom: 16px;
+    }
+    .mission-box p {
+      color: #bbb;
+      font-size: 15px;
+    }
+    .mission-box b {
+      color: var(--text);
+    }
+
+    /* ── PULL QUOTE ── */
+    .pull-quote {
+      border-left: 6px solid var(--orange);
+      background: var(--orange-dim);
+      border-radius: 0 12px 12px 0;
+      padding: 20px 24px;
+      margin: 24px 0;
+      font-style: italic;
+      font-size: 16px;
+      color: #e0e0e0;
+      line-height: 1.7;
+    }
+
+    /* ── STATS GRID ── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin: 24px 0;
+    }
+    .stat-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 18px 16px;
+      text-align: center;
+    }
+    .stat-val {
+      display: block;
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 900;
+      color: var(--text);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .stat-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .stat-growth {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--green);
+    }
+
+    /* ── TABLES ── */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin: 20px 0;
+    }
+    .data-table thead tr {
+      background: #181818;
+      border-bottom: 2px solid var(--orange);
+    }
+    .data-table th {
+      padding: 14px 16px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+    .data-table td {
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--line);
+      color: #ccc;
+      vertical-align: top;
+    }
+    .data-table tr:last-child td {
+      border-bottom: none;
+    }
+    .data-table .row-highlight {
+      background: rgba(255,102,0,0.07);
+    }
+    .data-table .row-highlight td {
+      color: var(--text);
+      font-weight: 700;
+    }
+    .data-table .row-highlight td:first-child::after {
+      content: ' ★';
+      color: var(--orange);
+      font-size: 12px;
+    }
+
+    /* ── TIER CARDS ── */
+    .tier-card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .tier-card.featured {
+      border-color: var(--orange);
+      box-shadow: 0 0 40px rgba(255,102,0,0.12);
+    }
+    .tier-head {
+      background: #161616;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--line);
+    }
+    .tier-card.featured .tier-head {
+      background: linear-gradient(90deg, #1a0c00, #161616);
+      border-bottom-color: rgba(255,102,0,0.3);
+    }
+    .tier-name {
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    .tier-price {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--orange);
+      white-space: nowrap;
+    }
+    .tier-body {
+      background: var(--panel);
+      padding: 22px 24px;
+    }
+    .tier-body ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .tier-body li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: #ccc;
+      line-height: 1.5;
+    }
+    .tier-body li::before {
+      content: '›';
+      color: var(--orange);
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1.2;
+      flex-shrink: 0;
+    }
+    .tier-body li b {
+      color: var(--text);
+    }
+
+    /* ── FOOTER CTA ── */
+    .footer-cta {
+      margin-top: 72px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-top: 6px solid var(--orange);
+      border-radius: 16px;
+      padding: 52px 32px;
+      text-align: center;
+    }
+    .footer-cta .footer-logo {
+      width: min(200px, 55%);
+      height: auto;
+      margin-bottom: 24px;
+      filter: drop-shadow(0 0 20px rgba(255,102,0,0.3));
+    }
+    .footer-cta .footer-logo-fallback {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+      height: 80px;
+      background: var(--orange);
+      border-radius: 14px;
+      font-size: 28px;
+      font-weight: 900;
+      color: #000;
+      margin-bottom: 24px;
+    }
+    .footer-cta h2 {
+      margin-bottom: 8px;
+    }
+    .footer-cta .footer-email {
+      font-size: clamp(18px, 4vw, 26px);
+      font-weight: 900;
+      color: var(--orange);
+      text-decoration: none;
+      display: block;
+      margin: 20px 0 6px;
+      transition: opacity 0.15s;
+    }
+    .footer-cta .footer-email:hover { opacity: 0.8; }
+    .footer-cta .footer-meta {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .footer-cta .footer-site {
+      font-size: 13px;
+      color: #555;
+      text-decoration: none;
+    }
+    .footer-cta .footer-site:hover { color: var(--orange); }
+    .footer-tagline {
+      margin-top: 28px;
+      font-size: 13px;
+      font-style: italic;
+      color: #555;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── UTIL ── */
+    .separator {
+      height: 1px;
+      background: var(--line);
+      margin: 48px 0;
+    }
+    b { color: var(--text); }
+    strong { color: var(--text); }
+
+    @media (max-width: 540px) {
+      .hero { padding: 40px 16px 36px; }
+      .card, .mission-box, .tier-body { padding: 18px 16px; }
+      .tier-head { padding: 14px 16px; }
+      .footer-cta { padding: 36px 18px; }
+      .data-table { font-size: 12px; }
+      .data-table th, .data-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <div class="hero">
+    <img
+      src="images/logo.jpg"
+      alt="AADS — Atlantic Area Darts Series"
+      class="hero-logo"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex';"
+    />
+    <div class="hero-logo-fallback" style="display:none;">🎯</div>
+    <div class="hero-eyebrow">Atlantic Area Darts Series</div>
+    <h1>Sponsorship Program</h1>
+    <div class="hero-sub">The Ultimate Partnership Manifesto — 2026</div>
+    <div class="hero-divider"></div>
+    <p class="hero-tagline">"More than a broadcast. A community legacy."</p>
+  </div>
+
+  <div style="text-align:center; padding: 28px 0 0;">
+    <p style="font-size:clamp(14px,2.2vw,17px); color:#888; max-width:620px; margin:0 auto;">
+      This is not a corporate pitch. This is an invitation to join a mission built on integrity, family, and the future of Atlantic Canadian Darts.
+    </p>
+  </div>
+
+  <!-- ═══════════ OUR STORY ═══════════ -->
+  <section>
+    <div class="section-label">Our Story</div>
+    <h2>The Heart of the CGC</h2>
+
+    <div class="card">
+      <h3>From a Garage to a Network</h3>
+      <p>
+        AADS was born in <b>Cecil's Garage</b> in Moncton. Known as the Cecil's Garage Championship (CGC), it began with a small group of players meeting Friday nights for the love of the sport. We didn't have sponsors or grants. We used <b>square boards</b> and tiny 50/50 draws to buy boards and trophies. Matthew Dow took that local spark and used his skills in graphic design and promotion to build a professional platform for the players.
+      </p>
+    </div>
+
+    <div class="mission-box">
+      <h3>The Truth About Our Funding</h3>
+      <p>
+        This program is a labor of love. Matthew Dow and Cecil Dow do not take a profit. In fact, <b>we currently fund the heating costs of winter events, the DartConnect fees, the cameras, and the entire live stream setup from our own personal pockets.</b> We do this because we believe the players deserve a stage and the community needs a home. We offer exposure to our partners not to get rich, but to keep the series running and keep the sport alive.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Building Stage Presence</h3>
+      <p>
+        Matthew designed AADS after traveling to the Canadian Open and seeing talented regional players underperform because they were "stage struck." We provide the lights, the cameras, and the atmosphere so that when our players reach the National stage, they've already played like pros.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════ COMMUNITY IMPACT ═══════════ -->
+  <section>
+    <div class="section-label">Community Impact</div>
+    <h2>We Take Care of Our Own</h2>
+    <p style="color:#aaa; font-size:15px; margin-bottom:20px;">AADS is a platform for the people. In our first year, we raised over <b>$10,000</b> for those in need.</p>
+
+    <div class="card">
+      <h3>The Carl Zugay Medical Fund</h3>
+      <p>
+        Carl is a 30-year veteran of the local leagues. When a medical condition left him struggling to walk, he mentioned a leg brace he couldn't afford. <b>Matthew along with the CGC family</b> rallied the community. In a single night, we raised <b>$1,000 in cash</b> to buy Carl his brace. No middleman, no fees — just a community supporting a legend.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>The Youth Nationals Mission</h3>
+      <p>
+        In <b>April 2026</b>, we hosted a high-impact fundraiser for youth stars <b>Rhyder and Emma</b>. Through live stream QR codes and donors who paid $100 to watch volunteers shave their heads, we raised <b>$850</b> for their travel to the May Nationals. We have also raised <b>$4,600</b> for a grieving mother and supported travel for players to the World Cup in <b>South Korea</b> and <b>Hungary</b>.
+      </p>
+    </div>
+
+    <div class="pull-quote">
+      "By helping us, you are fueling the future. Our goal is to encourage kids to join the sport, bring their friends, and grow the game until Atlantic Canada is the dominant force in World Darts."
+    </div>
+  </section>
+
+  <div class="separator"></div>
+
+  <!-- ═══════════ AUDIENCE ANALYTICS ═══════════ -->
+  <section>
+    <div class="section-label">Verified Analytics</div>
+    <h2>Audience Reach &amp; Growth</h2>
+    <p style="color:#aaa; font-size:15px; margin-bottom:20px;">These are <b>Facebook Foundation Stats</b> representing the massive reach we have already built.</p>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-label">Total Views</span>
+        <span class="stat-val">1.22M</span>
+        <span class="stat-growth">↑ 241%</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Last 90 Days</span>
+        <span class="stat-val">882K</span>
+        <span class="stat-growth">↑ 625%</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Last 60 Days</span>
+        <span class="stat-val">689K</span>
+        <span class="stat-growth">↑ 172%</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Last 28 Days</span>
+        <span class="stat-val">345K</span>
+        <span class="stat-growth">↑ 16%</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Last 14 Days</span>
+        <span class="stat-val">191K</span>
+        <span class="stat-growth">↑ 24%</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Last 7 Days</span>
+        <span class="stat-val">106K</span>
+        <span class="stat-growth">↑ 26%</span>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      77.1% of our viewers are <b>Non-Followers</b>. We are constantly breaking into new markets. Our reach now unites all four Atlantic Provinces and extends to viewers in the UK and Ireland.
+    </div>
+  </section>
+
+  <!-- ═══════════ BUSINESS CASE ═══════════ -->
+  <section>
+    <div class="section-label">The Business Case</div>
+    <h2>AADS vs. The Market</h2>
+    <p style="color:#aaa; font-size:15px; margin-bottom:4px;">Local marketing companies charge high fees for static, forgettable ads. AADS offers immersive, permanent branding.</p>
+
+    <div style="overflow-x:auto;">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Marketing Format</th>
+            <th>Avg. CPM</th>
+            <th>Lifespan</th>
+            <th>Impact</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Local Radio / TV</td>
+            <td>$15 – $25</td>
+            <td>30 Seconds (Then Gone)</td>
+            <td>Background Noise</td>
+          </tr>
+          <tr>
+            <td>Newspaper / Print</td>
+            <td>$20 – $35</td>
+            <td>1 Day</td>
+            <td>Low Retention</td>
+          </tr>
+          <tr class="row-highlight">
+            <td>AADS Sponsorship</td>
+            <td>~$1.60</td>
+            <td>Permanent</td>
+            <td>Active Focus</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>The YouTube Legacy — The Infinite Ad</h3>
+      <p>
+        We switched from Facebook Live to <b>YouTube Live</b> because Facebook deletes streams after 30 days. On YouTube, your sponsorship lives <b>forever</b>. Fans re-watch matches from 2026 in 2028. Your investment continues to market for you long after the tournament ends.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════ PODCAST ═══════════ -->
+  <section>
+    <div class="section-label">New Media</div>
+    <h2>"Behind the Oche" Podcast</h2>
+    <p style="color:#aaa; font-size:15px; margin-bottom:16px;">We are expanding. Our new weekly podcast goes deep into player profiles, match analysis, and the AADS lifestyle.</p>
+
+    <div class="mission-box">
+      <h3>The "Early Believer" Advantage</h3>
+      <p>
+        Any sponsor who jumps on board now, during our growth stages, will be <b>PRIORITIZED</b> for showcase spots on the podcast. We reward those who believe in the mission early by giving them the first right to be featured on our most intimate "Behind the Oche" segments.
+      </p>
+    </div>
+  </section>
+
+  <div class="separator"></div>
+
+  <!-- ═══════════ TIER 1 ═══════════ -->
+  <section>
+    <div class="section-label">Tier 1</div>
+    <h2>Series Anchor Partnerships</h2>
+
+    <div class="tier-card featured">
+      <div class="tier-head">
+        <span class="tier-name">Major Title Series Partner</span>
+        <span class="tier-price">$2,000 / Series</span>
+      </div>
+      <div class="tier-body">
+        <ul>
+          <li><b>Exclusivity:</b> The only Title Partner at the Tournament of Champions Finale.</li>
+          <li><b>Broadcast Power:</b> Your commercial is the FIRST ad played in every break (minimum 10 per event).</li>
+          <li><b>Podcast Priority:</b> First priority for interview and showcase spots on Behind the Oche.</li>
+          <li><b>Jersey Legacy:</b> Primary chest logo on all Champion and Fan Replica jerseys.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tier-card">
+      <div class="tier-head">
+        <span class="tier-name">Official Board Sponsor</span>
+        <span class="tier-price">$1,000 / Series</span>
+      </div>
+      <div class="tier-body">
+        <ul>
+          <li><b>100% Screen Time:</b> Your logo stays on the Board A surround for every single match.</li>
+          <li><b>Immersive Branding:</b> Fans stare at your logo for 6+ hours as they watch every event.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ TIER 2 ═══════════ -->
+  <section>
+    <div class="section-label">Tier 2</div>
+    <h2>Qualifier Event Menu — Events 1–6</h2>
+
+    <div style="overflow-x:auto;">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Single Event</th>
+            <th>6-Event Bundle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Event Night Partner</b> — Scoreboard &amp; Graphics</td>
+            <td>$350</td>
+            <td>$1,750 <span style="color:var(--green);font-size:12px;">(Save $350)</span></td>
+          </tr>
+          <tr>
+            <td><b>Commercial Spot</b> — 45-sec Rotation</td>
+            <td>$250</td>
+            <td>$1,250 <span style="color:var(--green);font-size:12px;">(Save $250)</span></td>
+          </tr>
+          <tr>
+            <td><b>Interview Zone</b> — Naming Rights</td>
+            <td>$200</td>
+            <td>$1,000 <span style="color:var(--green);font-size:12px;">(Save $200)</span></td>
+          </tr>
+          <tr>
+            <td><b>Apparel Partner</b> — Social Media Tagging</td>
+            <td>$100</td>
+            <td>$500 <span style="color:var(--green);font-size:12px;">(Save $100)</span></td>
+          </tr>
+          <tr>
+            <td><b>Drink Table Partner</b> — Product Placement</td>
+            <td>$100</td>
+            <td>$500 <span style="color:var(--green);font-size:12px;">(Save $100)</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══════════ FOOTER CTA ═══════════ -->
+  <div class="footer-cta">
+    <img
+      src="images/logo.jpg"
+      alt="AADS"
+      class="footer-logo"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex';"
+    />
+    <div class="footer-logo-fallback" style="display:none;">🎯</div>
+    <h2>Help Us Grow the Game</h2>
+    <p style="color:#888; font-size:15px; max-width:500px; margin:0 auto;">We provide the platform, you provide the fuel. Together, we show the world what Atlantic Canadian Darts is all about.</p>
+    <a class="footer-email" href="mailto:cgcdarts@gmail.com">cgcdarts@gmail.com</a>
+    <p class="footer-meta">Matthew Dow, Founder &mdash; Moncton, NB</p>
+    <a class="footer-site" href="https://www.aadsdarts.com" target="_blank" rel="noopener">www.aadsdarts.com</a>
+    <p class="footer-tagline">
+      "We provide the platform, you provide the fuel. Together, we show the world what Atlantic Canadian Darts is all about."
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
